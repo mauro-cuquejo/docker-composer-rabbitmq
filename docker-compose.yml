@@ -1,0 +1,28 @@
+version: "v2.15.1"
+services:
+  rabbitmq:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5002:15672
+      - 5003:5672
+    hostname: stats
+    volumes:
+      - ./data:/var/lib/rabbitmq/mnesia
+    environment:
+      RABBITMQ_DEFAULT_USER: nc39349
+      RABBITMQ_DEFAULT_PASS: prueba123
+      RABBITMQ_VM_MEMORY_HIGH_WATERMARK: 0.1
+    networks:
+      rabbitmq_net:
+        aliases:
+          - rabbitmq_host
+volumes:
+  data: {}
+networks:
+  rabbitmq_net:
+    name: rabbitmq_network
+    driver: bridge
