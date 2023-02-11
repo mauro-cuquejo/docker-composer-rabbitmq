@@ -1,4 +1,4 @@
-version: "v2.15.1"
+version: "2.15"
 services:
   rabbitmq:
     build:
@@ -15,7 +15,7 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: nc39349
       RABBITMQ_DEFAULT_PASS: prueba123
-      RABBITMQ_VM_MEMORY_HIGH_WATERMARK: 0.1
+      vm_memory_high_watermark.relative: 0.1
     networks:
       rabbitmq_net:
         aliases:
